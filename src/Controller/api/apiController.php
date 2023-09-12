@@ -10,8 +10,4 @@ class apiController {
         return templateUtil::exibir('/api/index',[]);
     }
 
-    public function intervaloPremios()
-    {
-        
-    }
 }

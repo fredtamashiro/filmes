@@ -6,6 +6,6 @@ $routes['GET'] = [
     '/importar-filmes/importar' => ['CLASS'=>'Importar\\ImportarController','FUNCTION'=>'store'],
     '/importar-filmes/apagar' => ['CLASS'=>'Importar\\ImportarController','FUNCTION'=>'delete'],
     '/api' => ['CLASS'=>'api\\apiController','FUNCTION'=>'index'],
-    '/api/intervalo-premios' => ['CLASS'=>'api\\apiController','FUNCTION'=>'intervaloPremios'],
+    '/api/intervalo-premios' => ['CLASS'=>'api\\intervaloPremiosController','FUNCTION'=>'index'],
 ];
 

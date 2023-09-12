@@ -16,6 +16,16 @@ class templateUtil {
 
     }
 
+    public static function api($dados)
+    {
+        header('Content-Type: application/json');
+        http_response_code(200);
+
+        $json = json_encode($dados);
+
+        echo $json;
+    }
+
     public static function html(): array
     {
         $html = file_get_contents("../src/View/template/padrao.php");
