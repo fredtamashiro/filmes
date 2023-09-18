@@ -12,12 +12,13 @@ class ImportarController {
     {
         $filmes = new filmes;
         $lista = $filmes->selecionarTodos();
+        // die('<pre>'.print_r($lista,1).'</pre>');
 
         if(!$lista){
             $lista = [];
         }
         
-        return templateUtil::exibir('/importar-filmes/index',['lista'=>$lista]);
+        return templateUtil::exibir("importar-filmes".DIRECTORY_SEPARATOR."index",['lista'=>$lista]);
     }
 
     public function store()
@@ -77,7 +78,10 @@ class ImportarController {
         $filmes = new filmes;
         $apagar = $filmes->apagar();
 
-        return templateUtil::exibir('/importar-filmes/apagar',['apagar'=>$apagar]);
+        $produtorFilme = new produtorFilme;
+        $produtorFilme->apagar();
+
+        return templateUtil::exibir("importar-filmes".DIRECTORY_SEPARATOR."apagar",['apagar'=>$apagar]);
     }
 
     private function separarProdutores($produtores)

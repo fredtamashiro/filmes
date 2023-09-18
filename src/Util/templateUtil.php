@@ -6,9 +6,11 @@ class templateUtil {
     public static function exibir($view, $dados): void
     {
         extract($dados);
+        // die('<pre>'.print_r($lista,1).'</pre>');
+
         $html = self::html();
 
-        $caminho = "../src/View" . $view . ".php";
+        $caminho = __DIR__.DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR ."View".DIRECTORY_SEPARATOR . $view . ".php";
 
         echo $html['HEADER'];
         require($caminho);
@@ -28,7 +30,8 @@ class templateUtil {
 
     public static function html(): array
     {
-        $html = file_get_contents("../src/View/template/padrao.php");
+        $padrao = __DIR__.DIRECTORY_SEPARATOR ."..".DIRECTORY_SEPARATOR ."View".DIRECTORY_SEPARATOR ."template" .DIRECTORY_SEPARATOR. "padrao.php";
+        $html = file_get_contents($padrao);
 
         $estrutura = explode("<%SLOT%>", $html);
 

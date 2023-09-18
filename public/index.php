@@ -3,8 +3,9 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require "../vendor/autoload.php";
-require "../routes/routes.php";
+require __DIR__."/../src/Config/producao.php";
+require __DIR__."/../vendor/autoload.php";
+require __DIR__."/../routes/routes.php";
 
 try {
     $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
@@ -26,6 +27,7 @@ try {
     $controllerNameSpace = "App\\Controller\\{$routes[$request][$uri]['CLASS']}";
 
     $controllerIstance = new $controllerNameSpace;
+
     $function = $routes[$request][$uri]['FUNCTION'];
     
     $controllerIstance->$function();
@@ -35,5 +37,5 @@ try {
     // $routes[$request]$uri();
 
 }catch(Exception $e){
-    $e->getMessage();
+    echo 'ATENCAO: '.$e->getMessage();
 }

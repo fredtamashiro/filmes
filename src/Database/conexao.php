@@ -2,39 +2,40 @@
 namespace App\Database;
 
 use PDO;
-use Exception;
-use PDOException;
 
 class conexao {
 
+    public $database;
+
+    public function __construct() {
+        $this->database = DB;
+    }
+
     public function pdo()
     {
-        try {
-            $db = new PDO('sqlite:../src/Database/filmes.db');
+        $sqlite = 'sqlite: '.$this->database.'.db';
 
-            $tabelaFilmes = 'CREATE TABLE IF NOT EXISTS filmes (
-                id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-                titulo VARCHAR(100) NOT NULL,
-                estudio VARCHAR(100) NOT NULL,
-                produtor VARCHAR(100) NOT NULL,
-                vencedor INTEGER,
-                ano INTEGER)';
+        $db = new PDO($sqlite);
 
-            $tabelaProdutores = 'CREATE TABLE IF NOT EXISTS produtor_filme (
-                id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-                produtor VARCHAR(100) NOT NULL,
-                filme_id INTEGER NOT NULL,
-                vencedor INTEGER,
-                ano INTEGER)';
+        $tabelaFilmes = 'CREATE TABLE IF NOT EXISTS filmes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            titulo VARCHAR(100) NOT NULL,
+            estudio VARCHAR(100) NOT NULL,
+            produtor VARCHAR(100) NOT NULL,
+            vencedor INTEGER,
+            ano INTEGER)';
 
-            $db->exec($tabelaFilmes);
-            $db->exec($tabelaProdutores);
+        $tabelaProdutores = 'CREATE TABLE IF NOT EXISTS produtor_filme (
+            id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            produtor VARCHAR(100) NOT NULL,
+            filme_id INTEGER NOT NULL,
+            vencedor INTEGER,
+            ano INTEGER)';
 
-            return $db;
+        $db->exec($tabelaFilmes);
+        $db->exec($tabelaProdutores);
 
-        } catch (PDOException $e) {
-
-            throw new Exception('Erro ao conectar no banco de dados: ' . $e->getMessage());
-        }
+        return $db;
+        
     }
 }

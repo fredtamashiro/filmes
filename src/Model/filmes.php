@@ -10,7 +10,7 @@ class filmes {
     public $conexao;
 
     public function __construct() {
-        $conexao = new conexao;
+        $conexao = new conexao();
         $this->conexao = $conexao->pdo();
     }
 
@@ -25,65 +25,47 @@ class filmes {
 
     public function selecionarPorTitulo($titulo)
     {
-        try {
-        
-            $sql = "SELECT * FROM filmes WHERE titulo = :titulo LIMIT 1";
-            $stmt = $this->conexao->prepare($sql);
-            $stmt->bindParam(':titulo', $titulo, PDO::PARAM_STR);
-            $stmt->execute();
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-            if ($row) {
-                return $row;
-            }
-                
-            return false;
-        
-        } catch (PDOException $e) {
-            echo 'Erro ao executar a consulta: ' . $e->getMessage();
+        $sql = "SELECT * FROM filmes WHERE titulo = :titulo LIMIT 1";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindParam(':titulo', $titulo, PDO::PARAM_STR);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($row) {
+            return $row;
         }
+            
+        return false;
     }
 
     public function selecionarTodos()
     {
-        try {
-            $lista = [];
-        
-            $sql = "SELECT * FROM filmes ORDER BY titulo ASC";
-            $stmt = $this->conexao->prepare($sql);
-            $stmt->execute();
+        $lista = [];
+    
+        $sql = "SELECT * FROM filmes ORDER BY titulo ASC";
+        $stmt = $this->conexao->prepare($sql);
 
-            while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                $lista[] = $row;
-            }
-            
-        
-            if(count($lista)>0) {
-                return $lista;
-            }
-                
-            return false;
+        $stmt->execute();
 
-        } catch (PDOException $e) {
-            echo 'Erro ao executar a consulta: ' . $e->getMessage();
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $lista[] = $row;
         }
+        
+        return $lista;
+
     }
 
     public function apagar()
     {
-        try {
-            $sql = "DELETE FROM filmes";
-            $stmt = $this->conexao->prepare($sql);
-            $resultado = $stmt->execute();
+        $sql = "DELETE FROM filmes";
+        $stmt = $this->conexao->prepare($sql);
+        $resultado = $stmt->execute();
 
-            if ($resultado !== false) {
-                return true;
-            } 
-                
-            return false;
+        if ($resultado !== false) {
+            return true;
+        } 
+            
+        return false;
 
-        } catch (PDOException $e) {
-            echo 'Erro ao executar a consulta: ' . $e->getMessage();
-        }
     }
 }

@@ -1,0 +1,12 @@
+table.table th, table.table td {
+    text-align: center;
+}
+
+table.table th {
+    background-color: #f4f4f4;
+    color: #646464;
+}
+
+.trofeu {
+    color: #ffaa00;
+}

@@ -2,7 +2,6 @@
 namespace App\Model;
 
 use PDO;
-use PDOException;
 use App\Database\conexao;
 
 class produtorFilme {
@@ -10,7 +9,7 @@ class produtorFilme {
     public $conexao;
 
     public function __construct() {
-        $conexao = new conexao;
+        $conexao = new conexao();
         $this->conexao = $conexao->pdo();
     }
 
@@ -24,54 +23,52 @@ class produtorFilme {
     }
 
     public function existe($filme_id,$produtor)
-    {
-        try {
-        
-            $sql = "SELECT * FROM produtor_filme WHERE filme_id = :filme_id AND produtor = :produtor LIMIT 1";
-            $stmt = $this->conexao->prepare($sql);
-            $stmt->bindParam(':filme_id', $filme_id, PDO::PARAM_INT);
-            $stmt->bindParam(':produtor', $produtor, PDO::PARAM_STR);
-            $stmt->execute();
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-            if ($row) {
-                return $row;
-            }
-                
-            return false;
-        
-        } catch (PDOException $e) {
-            echo 'Erro ao executar a consulta: ' . $e->getMessage();
+    {        
+        $sql = "SELECT * FROM produtor_filme WHERE filme_id = :filme_id AND produtor = :produtor LIMIT 1";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindParam(':filme_id', $filme_id, PDO::PARAM_INT);
+        $stmt->bindParam(':produtor', $produtor, PDO::PARAM_STR);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($row) {
+            return $row;
         }
+            
+        return false;
+    }
+
+    public function apagar()
+    {
+        $sql = "DELETE FROM produtor_filme";
+        $stmt = $this->conexao->prepare($sql);
+        $resultado = $stmt->execute();
+
+        if ($resultado !== false) {
+            return true;
+        } 
+            
+        return false;
+
     }
 
     public function vencedores()
     {
-        try {
-            $lista = [];
-        
-            $sql = "SELECT 
-                    produtor,
-                    ano
-                FROM produtor_filme
-                WHERE vencedor = 1 ";
+        $lista = [];
+    
+        $sql = "SELECT 
+                produtor,
+                ano
+            FROM produtor_filme
+            WHERE vencedor = 1 ";
 
-            $stmt = $this->conexao->prepare($sql);
-            $stmt->execute();
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->execute();
 
-            while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                $lista[] = $row;
-            }
-            
-        
-            if(count($lista)>0) {
-                return $lista;
-            }
-                
-            return false;
-
-        } catch (PDOException $e) {
-            echo 'Erro ao executar a consulta: ' . $e->getMessage();
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $lista[] = $row;
         }
-    }
+        
+        return $lista;
+}
 }
