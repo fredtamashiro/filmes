@@ -1,6 +1,7 @@
 <?php
 namespace App\Database;
 
+use Exception;
 use PDO;
 
 class conexao {
@@ -8,14 +9,20 @@ class conexao {
     public $database;
 
     public function __construct() {
+        if (!defined('DB')) {
+            throw new Exception("A constante do Banco de Dados nao foi definida");
+        }
+
         $this->database = DB;
+        
     }
 
     public function pdo()
     {
-        $sqlite = 'sqlite: '.$this->database.'.db';
+        $sqlite = "sqlite:".__DIR__."\\".$this->database;
 
         $db = new PDO($sqlite);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $tabelaFilmes = 'CREATE TABLE IF NOT EXISTS filmes (
             id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,

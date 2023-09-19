@@ -25,6 +25,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>ID</th>
                     <th>Titulo</th>
                     <th>Ano</th>
@@ -35,11 +36,12 @@
             </thead>
         <?php
             if(count($lista)>0){
-
+                $n = 1;
                 foreach ($lista as $item) {
                     $vencedor = $item['vencedor']==1?'Sim':'-';
                     echo '
                     <tr>
+                        <td>'.$n.'</td>
                         <td>'.$item['id'].'</td>
                         <td>'.$item['titulo'].'</td>
                         <td>'.$item['ano'].'</td>
@@ -47,6 +49,7 @@
                         <td>'.$item['produtor'].'</td>
                         <td class="text-center"> '.$vencedor.'</td>
                     </tr>';
+                    $n++;
                 }
 
             }else{

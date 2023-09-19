@@ -1,7 +1,10 @@
 <phpunit>
     <testsuites>
-        <testsuite name="Testes de Integração">
-            <directory>src/Tests</directory>
+        <testsuite name="import">
+            <directory>tests\Integration\Controller</directory>
+        </testsuite>
+        <testsuite name="api">
+            <directory>tests\Integration\Api</directory>
         </testsuite>
     </testsuites>
 </phpunit>

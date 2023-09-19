@@ -6,6 +6,6 @@ use App\Util\templateUtil;
 class HomeController {
     public function index() 
     {
-        return templateUtil::exibir("home".DIRECTORY_SEPARATOR ."index",['titulo'=>'boa tarde']);
+        return templateUtil::exibir("home/index",['titulo'=>'boa tarde']);
     }
 }

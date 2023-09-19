@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller\api;
 
+use App\Database\conexao;
 use App\Util\templateUtil;
 use App\Model\produtorFilme;
 
@@ -8,7 +9,8 @@ class intervaloPremiosController {
 
     public function index()
     {
-        $produtores = new produtorFilme;
+        $conexao = new conexao;
+        $produtores = new produtorFilme($conexao->pdo());
         $resultado = $produtores->vencedores();
 
         $lista = [];

@@ -2,15 +2,13 @@
 namespace App\Model;
 
 use PDO;
-use App\Database\conexao;
 
 class produtorFilme {
 
     public $conexao;
 
-    public function __construct() {
-        $conexao = new conexao();
-        $this->conexao = $conexao->pdo();
+    public function __construct($conexao) {
+        $this->conexao = $conexao;
     }
 
     public function gravar($dados)
@@ -40,7 +38,7 @@ class produtorFilme {
 
     public function apagar()
     {
-        $sql = "DELETE FROM produtor_filme";
+        $sql = "DELETE FROM produtor_filme WHERE true";
         $stmt = $this->conexao->prepare($sql);
         $resultado = $stmt->execute();
 

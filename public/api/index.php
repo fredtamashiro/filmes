@@ -3,9 +3,9 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require __DIR__."/../src/Config/producao.php";
-require __DIR__."/../vendor/autoload.php";
-require __DIR__."/../routes/routes.php";
+require __DIR__."/../../src/Config/producao.php";
+require __DIR__."/../../vendor/autoload.php";
+require __DIR__."/../../routes/api.php";
 
 try {
     $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
@@ -32,7 +32,10 @@ try {
     
     $view = $controllerIstance->$function();
 
-    echo $view['VIEW'];
+    header('Content-Type: application/json');
+    http_response_code($view['HTTP']);
+
+    echo $view['JSON'];
 
 }catch(Exception $e){
     echo 'ATENCAO: '.$e->getMessage();

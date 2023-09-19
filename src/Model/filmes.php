@@ -2,16 +2,13 @@
 namespace App\Model;
 
 use PDO;
-use PDOException;
-use App\Database\conexao;
 
 class filmes {
 
     public $conexao;
 
-    public function __construct() {
-        $conexao = new conexao();
-        $this->conexao = $conexao->pdo();
+    public function __construct($conexao) {
+        $this->conexao = $conexao;
     }
 
     public function gravar($dados)
@@ -57,7 +54,7 @@ class filmes {
 
     public function apagar()
     {
-        $sql = "DELETE FROM filmes";
+        $sql = "DELETE FROM filmes WHERE true";
         $stmt = $this->conexao->prepare($sql);
         $resultado = $stmt->execute();
 
