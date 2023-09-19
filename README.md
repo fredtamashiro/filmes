@@ -17,16 +17,16 @@ Aplicação backend + frontend
 
 1. Clone o repositório do GitHub.
 2. Acesso e terminal e navegue até o diretório do projeto.
-3. Use o composer para instalar as depencias: composer install
-4. No terminal navegue até o diretório "public" do projeto e "suba" o servidor web com a aplicação na porta 7000: php -S localhost:7000
-5. A aplicação vai estar disponível na seguinte url: http://localhost:7000
+3. Use o composer para instalar as depencias: `composer install`
+4. No terminal navegue até o diretório "public" do projeto e "suba" o servidor web com a aplicação na porta 7000: `php -S localhost:7000`
+5. A aplicação vai estar disponível na seguinte url: `http://localhost:7000`
 6. Pronto.
 
 ## Comportamento da Aplicação
 
 1. Ao carregar a página inicial (Dashboard), o ajax faz uma requisição (GET) para api de filmes.
 2. Caso não exista filmes no banco de dados (SQLite), a aplicação é redirecionado a página onde é realizada a importação dos filmes via arquivo CSV fornecido.
-   Obs.: O arquivo CSV de filmes está localizado no seguinte caminho: ./filmes/src/Database/movielist.csv
+   Obs.: O arquivo CSV de filmes está localizado no seguinte caminho: `./filmes/src/Database/movielist.csv`
 3. Após a importação, a lista de filmes importados é exibido na página.
 4. Retornando ao Dashboard o ajax/api vai retornar o intervalo dos produtores vencedores.
 
@@ -34,8 +34,8 @@ Aplicação backend + frontend
 
 Para executar os testes de integração com o PHPUnit, você pode usar os seguintes comandos no terminal:
  
-1. Grupo "import": ./vendor/bin/phpunit --testsuite=import
-2. Grupo "api": ./vendor/bin/phpunit --testsuite=api
+1. Grupo "import": `./vendor/bin/phpunit --testsuite=import`
+2. Grupo "api": `./vendor/bin/phpunit --testsuite=api`
 
 
 	
