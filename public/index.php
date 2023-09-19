@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 
 require __DIR__."/../src/Config/producao.php";
 require __DIR__."/../vendor/autoload.php";
-require __DIR__."/../routes/routes.php";
+require __DIR__."/../routes/web.php";
 
 try {
     $uri = parse_url($_SERVER['REQUEST_URI'])['path'];

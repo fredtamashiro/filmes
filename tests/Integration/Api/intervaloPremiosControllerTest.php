@@ -2,6 +2,7 @@
 namespace App\Api;
 
 use PHPUnit\Framework\TestCase;
+use App\Controller\Importar\ImportarController;
 use App\Controller\api\intervaloPremiosController;
 
 defined('DB') or define("DB","teste.sqlite"); 
@@ -49,6 +50,16 @@ class intervaloPremiosControllerTest extends TestCase {
             $this->assertIsInt($item['followingWin']);
         }
         
+    }
+
+    public function testApagaDb():void
+    {
+        $ImportarController = new ImportarController;
+        $ImportarController->delete();
+
+        $resultado = $ImportarController->index();
+
+        $this->assertCount(0, $resultado['DADOS']['lista']);
     }
 
 }

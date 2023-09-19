@@ -11,12 +11,13 @@
 </head>
 
 <body>
+	<?php
+	
+	?>
 	<div class="container">
 		<header class="d-flex justify-content-center py-3 border-bottom">
 			<ul class="nav nav-pills">
-				<li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home / Dashboard</a></li>
-				<li class="nav-item"><a href="/importar-filmes" class="nav-link">Importar</a></li>
-				<li class="nav-item"><a href="/api" class="nav-link">API</a></li>
+				<%MENU%>
 			</ul>
 		</header>
 		<main class="mt-5">

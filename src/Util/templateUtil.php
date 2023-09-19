@@ -6,7 +6,6 @@ class templateUtil {
     public static function exibir($view, $dados): array
     {
         extract($dados);
-        // die('<pre>'.print_r($lista,1).'</pre>');
 
         $html = self::html();
 
@@ -21,6 +20,25 @@ class templateUtil {
         return ['VIEW'=>$conteudoDaView,'DADOS'=>$dados];
     }
 
+    public static function menu()
+    {
+        // o correto é os itens ficar fora dessa funcao
+        $menu = '';
+
+        $itens = [
+            '/'=>'Dashboard',
+            '/importar-filmes'=>'Importar',
+            '/api-page'=>'API',
+        ];
+
+        foreach ($itens as $key => $value) {
+            $ativo = $_SERVER['REQUEST_URI']==$key?'active" aria-current="page':'';
+            $menu .= '<li class="nav-item"><a href="'.$key.'" class="nav-link '.$ativo.'">'.$value.'</a></li>';
+        }
+
+        return $menu;
+    }
+
     public static function api($dados)
     {
         $json = json_encode($dados);
@@ -30,8 +48,10 @@ class templateUtil {
 
     public static function html(): array
     {
+        $menu = self::menu();
         $padrao = __DIR__."/../View/template/padrao.php";
         $html = file_get_contents($padrao);
+        $html = str_replace("<%MENU%>",$menu,$html);
 
         $estrutura = explode("<%SLOT%>", $html);
 
