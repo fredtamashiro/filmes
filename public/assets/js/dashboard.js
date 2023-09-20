@@ -16,6 +16,8 @@ $(document).ready(function() {
         var dataAtual = new Date().getTime();
         var url = "http://localhost:7000/api/intervalo-premios?t=" + dataAtual;
 
+        console.log('Acessando API: '+url);
+
         $.ajax({
             url: url,
             cache: false,
