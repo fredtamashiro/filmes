@@ -14,7 +14,7 @@ $(document).ready(function() {
 
      setTimeout(function() {
         // var dataAtual = new Date().getTime();
-        var url = "/api/intervalo-premios";
+        var url = "/api/intervalo-premios?v=1.00";
 
         console.log('Acessando API: '+url);
 
@@ -26,7 +26,7 @@ $(document).ready(function() {
             success: function(data) {
                 if(data.min==''){
                     console.log('redirecionando para realizar a importacao de dados....');
-                    var novaURL = "http://localhost:7000/importar-filmes/importar";
+                    var novaURL = "/importar-filmes/importar";
                     window.location = novaURL;
                 }else{
                     atualizarDados(data.min, "min");
