@@ -9,7 +9,7 @@ Aplicação backend + frontend
 
 ## Pré-requisitos
 
-- PHP 8.1 ou superior
+- PHP 8.1 ou superior e SQLite habilitado.
 - Composer (https://getcomposer.org/) instalado
 - Servidor Web (Exemplo: PHP's Built-in Server)
 
@@ -18,7 +18,7 @@ Aplicação backend + frontend
 1. Clone o repositório do GitHub.
 2. Acesso e terminal e navegue até o diretório do projeto.
 3. Use o composer para instalar as depencias: `composer install`
-4. No terminal navegue até o diretório "public" do projeto e "suba" o servidor web com a aplicação na porta 7000: `php -S localhost:7000`
+4. No terminal navegue até o diretório "cd public" do projeto e "suba" o servidor web com a aplicação na porta 7000: `php -S localhost:7000`
 5. A aplicação vai estar disponível na seguinte url: `http://localhost:7000`
 6. Pronto.
 
