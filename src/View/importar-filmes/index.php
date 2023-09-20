@@ -53,7 +53,7 @@
                 }
 
             }else{
-                echo '<tr><td colspan="6" class="text-center text-danger">Nenhum filme no banco de dados.</td></tr>';
+                echo '<tr><td colspan="7" class="text-center text-danger">Nenhum filme no banco de dados.</td></tr>';
             }
         ?>
         </table>

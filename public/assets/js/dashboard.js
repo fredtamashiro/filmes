@@ -14,7 +14,7 @@ $(document).ready(function() {
 
      setTimeout(function() {
         var dataAtual = new Date().getTime();
-        var url = "http://localhost:7000/api/intervalo-premios?t=" + dataAtual;
+        var url = "/api/intervalo-premios?t=" + dataAtual;
 
         console.log('Acessando API: '+url);
 
