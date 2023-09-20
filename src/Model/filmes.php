@@ -54,7 +54,7 @@ class filmes {
 
     public function apagar()
     {
-        $sql = "DELETE FROM filmes WHERE true";
+        $sql = "DELETE FROM filmes";
         $stmt = $this->conexao->prepare($sql);
         $resultado = $stmt->execute();
 

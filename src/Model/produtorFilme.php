@@ -38,7 +38,7 @@ class produtorFilme {
 
     public function apagar()
     {
-        $sql = "DELETE FROM produtor_filme WHERE true";
+        $sql = "DELETE FROM produtor_filme";
         $stmt = $this->conexao->prepare($sql);
         $resultado = $stmt->execute();
 

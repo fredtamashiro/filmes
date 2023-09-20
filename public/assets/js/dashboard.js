@@ -13,8 +13,8 @@ $(document).ready(function() {
 
 
      setTimeout(function() {
-        var dataAtual = new Date().getTime();
-        var url = "/api/intervalo-premios?t=" + dataAtual;
+        // var dataAtual = new Date().getTime();
+        var url = "/api/intervalo-premios";
 
         console.log('Acessando API: '+url);
 

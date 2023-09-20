@@ -17,7 +17,7 @@
 
 <div id="produtores" class="row" style="display: none;">
     <div class="col">
-        <h4 class="text-center"><i class="fa fa-trophy trofeu"></i> Maior Inervalo</h4>
+        <h4 class="text-center"><i class="fa fa-trophy trofeu"></i> Maior Intervalo</h4>
         <table class="table border">
             <thead>
                 <tr>
