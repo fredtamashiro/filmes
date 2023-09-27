@@ -14,7 +14,7 @@ class ImportarControllerTest extends TestCase {
         $resultado = $ImportarController->store();
 
         $this->assertIsArray($resultado['DADOS']['lista']);
-        $this->assertCount(206, $resultado['DADOS']['lista']);
+        $this->assertCount(209, $resultado['DADOS']['lista']);
     }
 
     public function testSelectFilmes():void

@@ -25,6 +25,7 @@ class intervaloPremiosControllerTest extends TestCase {
         foreach ($dados['min'] as $item) {
             $this->assertArrayHasKey('producer', $item);
             $this->assertArrayHasKey('interval', $item);
+            $this->assertGreaterThan(0,$item['interval']);
             $this->assertArrayHasKey('previousWin', $item);
             $this->assertArrayHasKey('followingWin', $item);
         }
@@ -32,6 +33,7 @@ class intervaloPremiosControllerTest extends TestCase {
         foreach ($dados['max'] as $item) {
             $this->assertArrayHasKey('producer', $item);
             $this->assertArrayHasKey('interval', $item);
+            $this->assertGreaterThan(0,$item['interval']);
             $this->assertArrayHasKey('previousWin', $item);
             $this->assertArrayHasKey('followingWin', $item);
         }
@@ -39,6 +41,7 @@ class intervaloPremiosControllerTest extends TestCase {
         foreach ($dados['min'] as $item) {
             $this->assertIsString($item['producer']);
             $this->assertIsInt($item['interval']);
+            $this->assertGreaterThan(0,$item['interval']);
             $this->assertIsInt($item['previousWin']);
             $this->assertIsInt($item['followingWin']);
         }
@@ -46,6 +49,7 @@ class intervaloPremiosControllerTest extends TestCase {
         foreach ($dados['max'] as $item) {
             $this->assertIsString($item['producer']);
             $this->assertIsInt($item['interval']);
+            $this->assertGreaterThan(0,$item['interval']);
             $this->assertIsInt($item['previousWin']);
             $this->assertIsInt($item['followingWin']);
         }
