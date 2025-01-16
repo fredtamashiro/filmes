@@ -5,6 +5,9 @@
 </div>
 
 <div class="row mb-5">
+    <ul>
+        <li>Atualicação 16-01-25 13h56</li>
+    </ul>
     <div class="col text-center fs-3 text-body-secondary">
         Produtor com o maior e menor intervalo entre as premiações
     </div>
