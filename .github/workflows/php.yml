@@ -35,5 +35,6 @@ jobs:
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
-    - name: Verificar sintaxe
-      run: php -l src/Controller/api/intervaloPremiosController.php
+    - name: Verificar sintaxe php
+      run: | 
+        find src -name "*.php" -exec php -l {} \;
