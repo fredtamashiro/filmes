@@ -20,7 +20,10 @@ jobs:
     - name: Add SSH key Private sem senha
       uses: webfactory/ssh-agent@v0.5.3
       with:
-        ssh-private-key: ${{ secrets.SH_PRIVATE_KEY }}
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Add SSH passphrase
+      run: echo "${{ secrets.SSH_PASS }}" | ssh-add - > /dev/null
 
     - name: Deploy to server
       run: |
