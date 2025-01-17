@@ -8,9 +8,9 @@
         <div class="col text-start">
             <ul>
             <?php
-                foreach ($lista as $item) {
-                    echo '<li>[ID: '.$item[5].'] '.$item[0].' - '.$item[1].'</li>';
-                }
+            foreach ($lista as $item) {
+                echo '<li>[ID: ' . $item[5] . '] ' . $item[0] . ' - ' . $item[1] . '</li>';
+            }
             ?>
             </ul>
         </div>

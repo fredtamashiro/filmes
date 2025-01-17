@@ -1,2 +1,3 @@
 <?php
-define("DB","filmes.sqlite"); 
+
+define("DB", "filmes.sqlite");

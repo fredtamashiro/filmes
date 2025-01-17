@@ -1,12 +1,13 @@
 <?php
+
 namespace App\Controller\api;
 
 use App\Util\templateUtil;
 
-class apiController {
+class apiController
+{
     public function index()
     {
-        return templateUtil::exibir("api/index",[]);
+        return templateUtil::exibir("api/index", []);
     }
-
 }

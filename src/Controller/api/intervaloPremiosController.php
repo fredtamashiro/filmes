@@ -8,10 +8,9 @@ use App\Model\produtorFilme;
 
 class intervaloPremiosController
 {
-
     public function index()
     {
-        $conexao = new conexao;
+        $conexao = new conexao();
         $produtores = new produtorFilme($conexao->pdo());
         $resultado = $produtores->vencedores();
 
@@ -29,13 +28,11 @@ class intervaloPremiosController
 
         foreach ($lista as $vencedor) {
             if (count($vencedor) > 1) {
-
                 $pares = $this->criarPares($vencedor);
 
-                for($i=0;$i<count($pares);$i++){
+                for ($i = 0; $i < count($pares); $i++) {
                     array_push($multiplos, $pares[$i]);
                 }
-                
             }
         }
 
@@ -118,10 +115,9 @@ class intervaloPremiosController
         $pares = [];
 
         for ($i = 0; $i < count($chaves) - 1; $i++) {
-
             $par = [
                 $chaves[$i] => $vencedor[$chaves[$i]],
-                $chaves[$i+1] => $vencedor[$chaves[$i+1]]
+                $chaves[$i + 1] => $vencedor[$chaves[$i + 1]]
             ];
             $pares[] = $par;
         }

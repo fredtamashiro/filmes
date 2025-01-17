@@ -6,13 +6,13 @@
             <p>
                 <a 
                     href="/importar-filmes/importar" 
-                    class="btn btn-primary my-2 <?php echo count($lista)>0?'disabled':'' ?>"
-                    aria-disabled="<?php echo count($lista)>0?'true':'false' ?>"
+                    class="btn btn-primary my-2 <?php echo count($lista) > 0 ? 'disabled' : '' ?>"
+                    aria-disabled="<?php echo count($lista) > 0 ? 'true' : 'false' ?>"
                 >Importar Filmes</a>
                 <a 
                     href="/importar-filmes/apagar" 
-                    class="btn btn-danger my-2 <?php echo count($lista)>0?'':'disabled' ?>" 
-                    aria-disabled="<?php echo count($lista)>0?'false':'true' ?>"
+                    class="btn btn-danger my-2 <?php echo count($lista) > 0 ? '' : 'disabled' ?>" 
+                    aria-disabled="<?php echo count($lista) > 0 ? 'false' : 'true' ?>"
                 >Apagar Filmes</a>
             </p>
         </div>
@@ -35,26 +35,25 @@
                 </tr>
             </thead>
         <?php
-            if(count($lista)>0){
-                $n = 1;
-                foreach ($lista as $item) {
-                    $vencedor = $item['vencedor']==1?'Sim':'-';
-                    echo '
+        if (count($lista) > 0) {
+            $n = 1;
+            foreach ($lista as $item) {
+                $vencedor = $item['vencedor'] == 1 ? 'Sim' : '-';
+                echo '
                     <tr>
-                        <td>'.$n.'</td>
-                        <td>'.$item['id'].'</td>
-                        <td>'.$item['titulo'].'</td>
-                        <td>'.$item['ano'].'</td>
-                        <td>'.$item['estudio'].'</td>
-                        <td>'.$item['produtor'].'</td>
-                        <td class="text-center"> '.$vencedor.'</td>
+                        <td>' . $n . '</td>
+                        <td>' . $item['id'] . '</td>
+                        <td>' . $item['titulo'] . '</td>
+                        <td>' . $item['ano'] . '</td>
+                        <td>' . $item['estudio'] . '</td>
+                        <td>' . $item['produtor'] . '</td>
+                        <td class="text-center"> ' . $vencedor . '</td>
                     </tr>';
-                    $n++;
-                }
-
-            }else{
-                echo '<tr><td colspan="7" class="text-center text-danger">Nenhum filme no banco de dados.</td></tr>';
+                $n++;
             }
+        } else {
+            echo '<tr><td colspan="7" class="text-center text-danger">Nenhum filme no banco de dados.</td></tr>';
+        }
         ?>
         </table>
     </div>

@@ -8,11 +8,11 @@
         <div class="col text-center">
             
             <?php
-                if($apagar==true){
-                    echo '<p>Todos os registro apagados!</p>';
-                }else{
-                    echo '<p>Nenhum registro apagado.</p>';
-                }
+            if ($apagar == true) {
+                echo '<p>Todos os registro apagados!</p>';
+            } else {
+                echo '<p>Nenhum registro apagado.</p>';
+            }
             ?>
         </div>
     </div>

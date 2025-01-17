@@ -1,22 +1,22 @@
 <?php
+
 namespace App\Model;
 
 use PDO;
 
-class filmes {
-
+class filmes
+{
     public $conexao;
 
-    public function __construct($conexao) {
+    public function __construct($conexao)
+    {
         $this->conexao = $conexao;
     }
 
     public function gravar($dados)
     {
         $stmt = $this->conexao->prepare('INSERT INTO filmes (ano, titulo, estudio, produtor, vencedor) VALUES (?, ?, ?, ?, ?)');
-
         $stmt->execute($dados);
-
         return $this->conexao->lastInsertId();
     }
 
@@ -27,29 +27,24 @@ class filmes {
         $stmt->bindParam(':titulo', $titulo, PDO::PARAM_STR);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    
         if ($row) {
             return $row;
         }
-            
+
         return false;
     }
 
     public function selecionarTodos()
     {
         $lista = [];
-    
         $sql = "SELECT * FROM filmes ORDER BY titulo ASC";
         $stmt = $this->conexao->prepare($sql);
-
         $stmt->execute();
-
-        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $lista[] = $row;
         }
-        
-        return $lista;
 
+        return $lista;
     }
 
     public function apagar()
@@ -57,12 +52,10 @@ class filmes {
         $sql = "DELETE FROM filmes";
         $stmt = $this->conexao->prepare($sql);
         $resultado = $stmt->execute();
-
         if ($resultado !== false) {
             return true;
-        } 
-            
-        return false;
+        }
 
+        return false;
     }
 }

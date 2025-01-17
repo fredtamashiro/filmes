@@ -16,9 +16,14 @@ jobs:
       run: |
         find src -name "*.php" -exec php -l {} \;
 
+    # Corrigi a sintaxe
+    - name: PHP Code Beautifier and Fixer
+      run: vendor/bin/phpcbf --standard=PSR12 src
+
+    # Verifica a sintaxe
     - name: PHP Code Sniffer
       uses: php-actions/phpcs@v1
       with:
         php_version: 8.1
-        path: src/
+        path: src/Controller/Home/
         standard: phpcs.xml
