@@ -23,4 +23,4 @@ jobs:
         username: ${{ secrets.SFTP_USERNAME }}
         password: ${{ secrets.SFTP_PASSWORD }}
         local-dir: ./ # Diretório local a ser enviado
-        server-dir: /home2/fredta05/filmes/ # Diretório no servidor
+        server-dir: /filmes/ # Diretório no servidor
