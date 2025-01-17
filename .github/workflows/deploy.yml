@@ -17,7 +17,7 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-dev
 
 
-    - name: Add SSH key Private
+    - name: Add SSH key Private sem senha
       uses: webfactory/ssh-agent@v0.5.3
       with:
         ssh-private-key: ${{ secrets.SH_PRIVATE_KEY }}
