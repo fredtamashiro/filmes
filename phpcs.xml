@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ruleset name="CustomRuleset">
+    <description>My custom coding standard ruleset.</description>
+
+    <!-- Include the PSR12 standard -->
+    <rule ref="PSR12"/>
+
+    <!-- Add or exclude specific rules here -->
+    <!-- Example: Exclude a specific rule -->
+    <!-- <exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/> -->
+
+    <!-- Example: Include a specific rule -->
+    <!-- <rule ref="Generic.WhiteSpace.DisallowTabIndent"/> -->
+
+    <!-- Paths to include in the scan -->
+    <file>src</file>
+
+    <!-- Paths to exclude from the scan -->
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/tests/*</exclude-pattern>
+</ruleset>
