@@ -16,13 +16,11 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-dev
 
-    - name: Deploy via SFTP
-      uses: appleboy/scp-action@v0.1.0
+    - name: Deploy via FTP
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        host: ${{ secrets.SFTP_SERVER }}
-        username: ${{ secrets.SFTP_USERNAME }}
-        password: ${{ secrets.SFTP_PASSWORD }}
-        source: "./"
-        target: "/home2/fredta05/filmes"
-        port: 2222
-        rm: true
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./ # Diretório local a ser enviado
+        server-dir: /home2/fredta05/filmes # Diretório no servidor
