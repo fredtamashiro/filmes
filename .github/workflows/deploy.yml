@@ -16,14 +16,14 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-dev
 
-
-    - name: Add SSH key Private sem senha
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-    - name: Add SSH passphrase
-      run: echo "${{ secrets.SSH_PASS }}" | ssh-add - > /dev/null
+    - name: Start SSH Agent and Add Key
+      run: |
+       echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+       chmod 600 ~/.ssh/id_rsa
+       eval $(ssh-agent -s)
+       echo "${{ secrets.SSH_PASSPHRASE }}" | ssh-add ~/.ssh/id_rsa
+      env:
+       SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
 
     - name: Deploy to server
       run: |
