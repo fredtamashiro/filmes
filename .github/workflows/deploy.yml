@@ -16,13 +16,15 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-dev
 
-    - name: Setup SSH
+      # Adicionando a chave SSH para o deploy
+    - name: Set up SSH key
       uses: webfactory/ssh-agent@v0.5.3
       with:
        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-    - name: Deploy to server
+      # Rodando o rsync para o deploy
+    - name: Deploy via rsync
       run: |
-        rsync -avz --delete-after \
-          -e "ssh -o StrictHostKeyChecking=no" \
-          ./ fredta05@50.116.87.210:/home2/fredta05/filmes
+       rsync -avz --delete-after \
+       -e "ssh -o StrictHostKeyChecking=no" \
+       ./ fredta05@50.116.87.210:/home2/fredta05/filmes
