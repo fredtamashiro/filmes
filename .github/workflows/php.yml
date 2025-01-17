@@ -38,3 +38,10 @@ jobs:
     - name: Verificar sintaxe php
       run: | 
         find src -name "*.php" -exec php -l {} \;
+
+    - name: PHP Code Sniffer
+      uses: php-actions/phpcs@v1
+      with:
+        php_version: 8.1
+        path: src/
+        standard: phpcs.xml
