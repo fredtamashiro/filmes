@@ -16,10 +16,11 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-dev
 
-    - name: Add SSH key
+
+    - name: Add SSH key Private
       uses: webfactory/ssh-agent@v0.5.3
       with:
-        ssh-private-key: ${{ SH_PRIVATE_KEY }}
+        ssh-private-key: ${{ secrets.SH_PRIVATE_KEY }}
 
     - name: Deploy to server
       run: |
